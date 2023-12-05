@@ -29,6 +29,9 @@ app.add_middleware(
 class Item(BaseModel):
     bmi: float
     total_expenditure: float
+    gdp: float
+    life_expectancy: float
+    income_composition_of_resources: float
 
 @app.get("/hi")
 def index():
@@ -37,7 +40,7 @@ def index():
 @app.post("/predict")
 def predict(item: Item):
     # Crear un DataFrame con los datos de entrada
-    data = {' BMI ': [item.bmi], 'Total expenditure': [item.total_expenditure]}
+    data = {' BMI ': [item.bmi], 'Total expenditure': [item.total_expenditure], 'GDP': [item.gdp], 'Life expectancy ': [item.life_expectancy], 'Income composition of resources': [item.income_composition_of_resources]}
     df = pd.DataFrame(data)
 
     # Hacer una predicción utilizando el modelo
