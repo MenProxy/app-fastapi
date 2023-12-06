@@ -30,7 +30,7 @@ class Item(BaseModel):
     bmi: float
     total_expenditure: float
     gdp: float
-    life_expectancy: float
+    percentage_expenditure: float
     income_composition_of_resources: float
 
 @app.get("/hi")
@@ -40,7 +40,13 @@ def index():
 @app.post("/predict")
 def predict(item: Item):
     # Crear un DataFrame con los datos de entrada
-    data = {' BMI ': [item.bmi], 'Total expenditure': [item.total_expenditure], 'GDP': [item.gdp], 'Life expectancy ': [item.life_expectancy], 'Income composition of resources': [item.income_composition_of_resources]}
+    data = {
+        " BMI ": [item.bmi],
+        "Total expenditure": [item.total_expenditure],
+        "GDP": [item.gdp],
+        "percentage expenditure": [item.percentage_expenditure],
+        "Income composition of resources": [item.income_composition_of_resources]
+    }
     df = pd.DataFrame(data)
 
     # Hacer una predicción utilizando el modelo
